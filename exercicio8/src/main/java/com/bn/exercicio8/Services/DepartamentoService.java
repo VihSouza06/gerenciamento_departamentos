@@ -30,8 +30,10 @@ public class DepartamentoService {
     }
 
     public DepartamentoModel atualizarDepartamento(Long id, DepartamentoModel departamentoModel){
-        DepartamentoModel newDepartamentoModel = departamentoRepository.findById(id).get();
-        return departamentoRepository.save(departamentoModel);
+        DepartamentoModel novoDepartamento = departamentoRepository.findById(id).get();
+        novoDepartamento.setNome(departamentoModel.getNome());
+        novoDepartamento.setLocalizacao(departamentoModel.getLocalizacao());
+        return departamentoRepository.save(novoDepartamento);
 
     }
 

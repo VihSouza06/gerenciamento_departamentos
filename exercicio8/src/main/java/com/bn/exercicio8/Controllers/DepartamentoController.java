@@ -19,13 +19,14 @@ public class DepartamentoController {
 
     @GetMapping
     public ResponseEntity<List<DepartamentoModel>> findAll(){
-        List<DepartamentoModel> departamento = departamentoService.findAll();
-        return ResponseEntity.ok().body(departamento);
+        List<DepartamentoModel> departamentos = departamentoService.findAll();
+        return ResponseEntity.ok().body(departamentos);
     }
 
     @GetMapping("/{id}")
-    public DepartamentoModel buscarDepartamentoPorId(@PathVariable Long id){
-        return departamentoService.buscarDepartamentoPorId(id);
+    public ResponseEntity<DepartamentoModel> buscarDepartamentoPorId(@PathVariable Long id){
+        DepartamentoModel departamento = departamentoService.buscarDepartamentoPorId(id);
+        return ResponseEntity.ok(departamento);
     }
 
     @PostMapping
